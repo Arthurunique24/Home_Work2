@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-	
+
 	Driver p1;
 	Passenger p2;
 	Car p3;
@@ -16,7 +16,7 @@ int main()
 	cout << "Enter 3, if you want to work with freight Cars " << endl;
 	cout << "Enter 4, if you want to work with buses " << endl;
 	int count = 1;
-	while (count =1)
+	while (count = 1)
 	{
 		cin >> n;
 		if (n == 0)
@@ -24,6 +24,7 @@ int main()
 			cout << "Enter 0, if you want to see data baze of drivers" << endl;
 			cout << "Enter 1, if you want to complete data baze of drivers" << endl;
 			cout << "Enter 2, if you want to correct data baze of drivers" << endl;
+			cout << "Enter 3, if you want to find passengers" << endl;
 			int k;
 			cin >> k;
 			if (k == 0)
@@ -34,9 +35,13 @@ int main()
 			{
 				p1.savedb();
 			}
-			else if (k ==2)
+			else if (k == 2)
 			{
 				p1.correctdb();
+			}
+			else if (k == 3)
+			{
+				p1.finddb();
 			}
 		}
 		if (n == 1)
@@ -44,6 +49,7 @@ int main()
 			cout << "Enter 0, if you want to see data baze of passengers" << endl;
 			cout << "Enter 1, if you want to complete data baze of passengers" << endl;
 			cout << "Enter 2, if you want to correct data baze of passengers" << endl;
+			cout << "Enter 3, if you want to find passengers" << endl;
 			int k;
 			cin >> k;
 			if (k == 0)
@@ -54,16 +60,22 @@ int main()
 			{
 				p2.savedb();
 			}
-			else
+			else if (k == 2)
 			{
 				p2.correctdb();
 			}
+			else if (k == 3)
+			{
+				p2.finddb();
+			}
+			
 		}
 		if (n == 2)
 		{
 			cout << "Enter 0, if you want to see data baze of cars" << endl;
 			cout << "Enter 1, if you want to complete data baze of cars" << endl;
 			cout << "Enter 2, if you want to correct data baze of cars" << endl;
+			cout << "Enter 3, if you want to find car" << endl;
 			int k;
 			cin >> k;
 			if (k == 0)
@@ -74,16 +86,22 @@ int main()
 			{
 				p3.savedb();
 			}
-			else
+			else if (k == 2)
 			{
 				p3.correctdb();
+			}
+			else if (k == 3)
+			{
+				p3.finddb();
 			}
 		}
 		if (n == 3)
 		{
-			cout << "Enter 0, if you want to see data baze of drivers" << endl;
-			cout << "Enter 1, if you want to complete data baze of drivers" << endl;
-			cout << "Enter 2, if you want to correct data baze of drivers" << endl;
+			cout << "Enter 0, if you want to see data baze of freight car" << endl;
+			cout << "Enter 1, if you want to complete data baze of freight car" << endl;
+			cout << "Enter 2, if you want to correct data baze of freight car" << endl;
+			cout << "Enter 3, if you want to find freight car" << endl;
+
 			int k;
 			cin >> k;
 			if (k == 0)
@@ -94,16 +112,21 @@ int main()
 			{
 				p4.savedb();
 			}
-			else
+			else if (k == 2)
 			{
 				p4.correctdb();
+			}
+			else if (k == 3)
+			{
+				p4.finddb();
 			}
 		}
 		if (n == 4)
 		{
-			cout << "Enter 0, if you want to see data baze of drivers" << endl;
-			cout << "Enter 1, if you want to complete data baze of drivers" << endl;
-			cout << "Enter 2, if you want to correct data baze of drivers" << endl;
+			cout << "Enter 0, if you want to see data baze of buses" << endl;
+			cout << "Enter 1, if you want to complete data baze of buses" << endl;
+			cout << "Enter 2, if you want to correct data baze of buses" << endl;
+			cout << "Enter 3, if you want to find freight buses" << endl;
 			int k;
 			cin >> k;
 			if (k == 0)
@@ -114,20 +137,17 @@ int main()
 			{
 				p5.savedb();
 			}
-			else
+			else if (k == 2)
 			{
 				p5.correctdb();
 			}
+			else if (k == 3)
+			{
+				p5.finddb();
+			}
 		}
-		//exit(0);
 	} 
-	//p1.savedb();
-	//p1.loaddb();
-	//p1.correctdb();
-	//p4.savedb();
-	//p4.loaddb();
-	//p4.correctdb();
-	
+
 	system("pause");
 	return 0;
 }
