@@ -1,17 +1,21 @@
+#pragma once
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <map>
+#include <cstring>
 
 using namespace std;
 
 class Driver
 {
 public:
+	char* n = "Driver.txt";
 	void savedb()
 	{
 		ofstream file_driver;
-		file_driver.open("Driver.txt", ios::app);
+		file_driver.open(n, ios::app);
 		if (!file_driver)
 		{
 			cerr << "File not found"; exit(1);
@@ -19,7 +23,7 @@ public:
 		int a;
 		cout << "How many drivers you want to add: ";
 		cin >> a;
-		for(int i=0;i<a;i++)
+		for (int i = 0; i<a; i++)
 		{
 			cin >> fio_of_driver;
 			file_driver << fio_of_driver << endl;
@@ -29,7 +33,7 @@ public:
 	void loaddb()
 	{
 		ifstream file_driver;
-		file_driver.open("Driver.txt");
+		file_driver.open(n);
 		if (!file_driver)
 		{
 			cerr << "File not found"; exit(1);
@@ -42,43 +46,57 @@ public:
 		}
 		cout << "===========================" << endl;
 	}
+	void finddb()
+	{
+		ifstream input("Driver.txt");
+		char word[100];
+		cout << "Enter name, to find: ";
+		cin >> word;
+		while (input.getline(buffer, 100))
+		{
+			if (strstr(buffer, word))
+			{
+				cout << "We have this Driver in base" << endl;
+			}
+		}
+	}
 
 	void correctdb()
 	{
-			string search, repl, path, file;
-			cin.get();
-			cout << "Name to search= ";
-			getline(cin, search);
-			cout << endl;
-			cout << "Name to replace= ";
-			getline(cin, repl);
-			path = "Driver.txt";
-			fstream file_driver(path.c_str());
-			if (!file_driver) 
-			{ 
-				cerr << "file not found"; exit(1); 
-			}
-			getline(file_driver, file, (char)26);
-			file_driver.clear();
-			file_driver.close();
-			cout << "___________________________" << endl;
-			cout << "Before " << endl;
-			cout << "___________________________" << endl;
-			cout << file << endl;
-			string::size_type ind = 0;
-			while ((ind = file.find(search, ind)) != string::npos) //специальное значение, равное максимальному значению, которое может предоставить тип 
-			{
-				file.replace(ind, search.size(), repl); //заменяем подстроку 
-				ind += repl.size();
-			}
-			cout << "___________________________" << endl;
-			cout << "After " << endl;
-			cout << "___________________________" << endl;
-			cout << file << endl;
-			file_driver.open(path.c_str(), ios::out | ios::trunc);
-			file_driver << file;
-			file_driver.close();
-			cout << "===========================" << endl;
+		string search, repl, path, file;
+		cin.get();
+		cout << "Name to search= ";
+		getline(cin, search);
+		cout << endl;
+		cout << "Name to replace= ";
+		getline(cin, repl);
+		path = "Driver.txt";
+		fstream file_driver(path.c_str());
+		if (!file_driver)
+		{
+			cerr << "file not found"; exit(1);
+		}
+		getline(file_driver, file, (char)26);
+		file_driver.clear();
+		file_driver.close();
+		cout << "___________________________" << endl;
+		cout << "Before " << endl;
+		cout << "___________________________" << endl;
+		cout << file << endl;
+		string::size_type ind = 0;
+		while ((ind = file.find(search, ind)) != string::npos) //специальное значение, равное максимальному значению, которое может предоставить тип 
+		{
+			file.replace(ind, search.size(), repl); //заменяем подстроку 
+			ind += repl.size();
+		}
+		cout << "___________________________" << endl;
+		cout << "After " << endl;
+		cout << "___________________________" << endl;
+		cout << file << endl;
+		file_driver.open(path.c_str(), ios::out | ios::trunc);
+		file_driver << file;
+		file_driver.close();
+		cout << "===========================" << endl;
 	}
 protected:
 	char fio_of_driver[50];
@@ -121,6 +139,20 @@ public:
 			cout << buffer << endl;
 		}
 		cout << "===========================" << endl;
+	}
+	void finddb()
+	{
+		ifstream input("Passenger.txt");
+		char word[100];
+		cout << "Enter name, to find: ";
+		cin >> word;
+		while (input.getline(buffer, 100))
+		{
+			if (strstr(buffer, word))
+			{
+				cout << "We have this Passenger in base" << endl;
+			}
+		}
 	}
 	void correctdb()
 	{
@@ -165,7 +197,7 @@ protected:
 };
 
 class Car // Легковые автомобили
-{ 
+{
 public:
 	void savedb()
 	{
@@ -176,7 +208,7 @@ public:
 			cerr << "File not found"; exit(1);
 		}
 		int a;
-		
+
 		cout << "How many cars you want to add: ";
 		cin >> a;
 		for (int i = 0; i<a; i++)
@@ -205,6 +237,20 @@ public:
 			cout << buffer << endl;
 		}
 		cout << "===========================" << endl;
+	}
+	void finddb()
+	{
+		ifstream input("Car.txt");
+		char word[100];
+		cout << "Enter name, to find: ";
+		cin >> word;
+		while (input.getline(buffer, 100))
+		{
+			if (strstr(buffer, word))
+			{
+				cout << "We have this Passenger in base" << endl;
+			}
+		}
 	}
 	void correctdb()
 	{
@@ -253,7 +299,7 @@ public:
 	void savedb()
 	{
 		ofstream file_auto;
-		file_auto.open("Car2.txt", ios::app);
+		file_auto.open("Freight_Car.txt", ios::app);
 		if (!file_auto)
 		{
 			cerr << "File not found"; exit(1);
@@ -271,7 +317,7 @@ public:
 	void loaddb()
 	{
 		ifstream file_auto;
-		file_auto.open("Car2.txt");
+		file_auto.open("Freight_Car.txt");
 		if (!file_auto)
 		{
 			cerr << "File not found"; exit(1);
@@ -284,6 +330,20 @@ public:
 		}
 		cout << "===========================" << endl;
 	}
+	void finddb()
+	{
+		ifstream input("Freight_Car.txt");
+		char word[100];
+		cout << "Enter name, to find: ";
+		cin >> word;
+		while (input.getline(buffer, 100))
+		{
+			if (strstr(buffer, word))
+			{
+				cout << "We have this Passenger in base" << endl;
+			}
+		}
+	}
 	void correctdb()
 	{
 		string search, repl, path, file;
@@ -292,7 +352,7 @@ public:
 		getline(cin, search);
 		cout << "Car to replace= ";
 		getline(cin, repl);
-		path = "Car2.txt";
+		path = "Freight_Car.txt";
 		fstream file_auto(path.c_str());
 		if (!file_auto)
 		{
@@ -330,7 +390,7 @@ public:
 	void savedb()
 	{
 		ofstream file_auto;
-		file_auto.open("Car3.txt", ios::app);
+		file_auto.open("Bus.txt", ios::app);
 		if (!file_auto)
 		{
 			cerr << "File not found"; exit(1);
@@ -348,7 +408,7 @@ public:
 	void loaddb()
 	{
 		ifstream file_auto;
-		file_auto.open("Car3.txt");
+		file_auto.open("Bus.txt");
 		if (!file_auto)
 		{
 			cerr << "File not found"; exit(1);
@@ -361,6 +421,20 @@ public:
 		}
 		cout << "===========================" << endl;
 	}
+	void finddb()
+	{
+		ifstream input("Bus.txt");
+		char word[100];
+		cout << "Enter name, to find: ";
+		cin >> word;
+		while (input.getline(buffer, 100))
+		{
+			if (strstr(buffer, word))
+			{
+				cout << "We have this Passenger in base" << endl;
+			}
+		}
+	}
 	void correctdb()
 	{
 		string search, repl, path, file;
@@ -369,7 +443,7 @@ public:
 		getline(cin, search);
 		cout << "Car to replace= ";
 		getline(cin, repl);
-		path = "Car3.txt";
+		path = "Bus.txt";
 		fstream file_auto(path.c_str());
 		if (!file_auto)
 		{
